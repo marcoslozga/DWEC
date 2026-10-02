@@ -1,5 +1,5 @@
 function saludar() {
-    alert("Hola, TU NOMBRE Y APELLIDOS");
+    alert("Hola, Marcos Lozano Gálvez");
     console.log("Botón Saludar pulsado correctamente.");
 }
 
