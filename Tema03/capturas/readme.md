@@ -18,7 +18,7 @@ Carpeta tema03:
 
 ## Evidencias de ejecución
 
-1. capturas/a-pagina.png: Vista general de la página index.html en el navegador con la cabecera y las tarjetas.
+1. a-pagina.png: Vista general de la página index.html en el navegador con la cabecera y las tarjetas.
 2. capturas/b-consola-ej1.png: Muestra en la consola de los seis tipos de datos y sus typeof.
 3. capturas/c-consola-ej2.png: Resultados en consola de las ocho conversiones explícitas.
 4. capturas/d-consola-ej3.png: Evaluación de operaciones con coerción y comparaciones con operador débil y estricto.
