@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculadora y bucles · [Nombre y apellidos]</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar bg-primary" data-bs-theme="dark">
+    <div class="container">
+      <span class="navbar-brand"><i class="bi bi-person-circle"></i> [Nombre y apellidos]</span>
+      <span class="navbar-text">Tarea 4 · DWEC</span>
+    </div>
+  </nav>
+
+  <header class="bg-body-tertiary border-bottom py-4 mb-4">
+    <div class="container">
+      <h1 class="h2 mb-1">Calculadora y bucles</h1>
+      <p class="lead mb-0 text-body-secondary">Una página para practicar operaciones, comparaciones y distintas formas de repetir instrucciones.</p>
+    </div>
+  </header>
+
+  <main class="container mb-5">
+    <div class="row g-4">
+      <div class="col-12 col-lg-5">
+        <section class="card h-100">
+          <div class="card-header"><i class="bi bi-input-cursor-text"></i> Los números</div>
+          <div class="card-body">
+            <label for="numero1" class="form-label">Número 1</label>
+            <input type="number" id="numero1" class="form-control mb-3" step="any">
+            <label for="numero2" class="form-label">Número 2</label>
+            <input type="number" id="numero2" class="form-control" step="any">
+          </div>
+        </section>
+      </div>
+      <div class="col-12 col-lg-7">
+        <section class="card h-100">
+          <div class="card-header"><i class="bi bi-card-text"></i> Resultado</div>
+          <div class="card-body"><div id="salida" aria-live="polite"></div></div>
+        </section>
+      </div>
+
+      <div class="col-12 col-lg-6">
+        <section class="card h-100">
+          <div class="card-header"><i class="bi bi-calculator"></i> Ejercicio 1 · Calculadora</div>
+          <div class="card-body d-flex flex-wrap gap-2">
+            <button type="button" class="btn btn-primary" onclick="sumar()">Sumar</button>
+            <button type="button" class="btn btn-primary" onclick="restar()">Restar</button>
+            <button type="button" class="btn btn-primary" onclick="multiplicar()">Multiplicar</button>
+            <button type="button" class="btn btn-primary" onclick="dividir()">Dividir</button>
+            <button type="button" class="btn btn-primary" onclick="potencia()">Potencia</button>
+            <button type="button" class="btn btn-primary" onclick="modulo()">Módulo</button>
+          </div>
+        </section>
+      </div>
+
+      <div class="col-12 col-lg-6">
+        <section class="card h-100">
+          <div class="card-header"><i class="bi bi-arrow-left-right"></i> Ejercicio 2 · Comparaciones</div>
+          <div class="card-body d-flex flex-wrap gap-2">
+            <button type="button" class="btn btn-success" onclick="cualEsMayor()">¿Cuál es mayor?</button>
+            <button type="button" class="btn btn-success" onclick="parOImpar()">¿Par o impar?</button>
+          </div>
+        </section>
+      </div>
+
+      <div class="col-12">
+        <section class="card">
+          <div class="card-header"><i class="bi bi-repeat"></i> Ejercicios 3 y 4 · Bucles</div>
+          <div class="card-body">
+            <h2 class="h6">Bucles con texto</h2>
+            <div class="btn-group mb-4" role="group" aria-label="Bucles con texto">
+              <button type="button" class="btn btn-info" onclick="bucleFor()">for</button>
+              <button type="button" class="btn btn-info" onclick="bucleWhile()">while</button>
+              <button type="button" class="btn btn-info" onclick="bucleDoWhile()">do…while</button>
+            </div>
+            <h2 class="h6">Bucles con badges</h2>
+            <div class="btn-group" role="group" aria-label="Bucles con badges">
+              <button type="button" class="btn btn-warning" onclick="badgesFor()">for</button>
+              <button type="button" class="btn btn-warning" onclick="badgesWhile()">while</button>
+              <button type="button" class="btn btn-warning" onclick="badgesDoWhile()">do…while</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-body-tertiary border-top py-3">
+    <div class="container small text-body-secondary">[Nombre y apellidos] · DWEC 26/27 · Tarea 4 · Las capturas, la reflexión y las fuentes están en el README.</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/ayudas.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
