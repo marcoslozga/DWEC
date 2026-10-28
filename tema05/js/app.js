@@ -1,4 +1,4 @@
-/* Tarea 5 · Marcos Lozano Gálvez · Manipular el DOM */
+/* Tarea 5 · Marcos Lozano Galvez · Manipular el DOM */
 
 console.log("app.js cargado");
 
@@ -166,3 +166,4 @@ function verDatosVentana() {
   document.querySelector("#datoIdioma").textContent = navigator.language;
   console.log("Datos de ventana:", ancho, alto, "punto de corte:", punto);
 }
+
