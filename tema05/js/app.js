@@ -113,6 +113,7 @@ function anadirTarea() {
     tarea.classList.add("list-group-item");
     const casilla = document.createElement("input");
     casilla.type = "checkbox";
+    casilla.setAttribute("aria-label", "Completar tarea: " + texto);
     casilla.classList.add("form-check-input", "me-2");
     const descripcion = document.createElement("span");
     descripcion.textContent = texto;
