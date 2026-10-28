@@ -166,4 +166,3 @@ function verDatosVentana() {
   document.querySelector("#datoIdioma").textContent = navigator.language;
   console.log("Datos de ventana:", ancho, alto, "punto de corte:", punto);
 }
-

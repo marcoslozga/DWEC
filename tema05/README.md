@@ -42,11 +42,11 @@ La ventana simulada mide 390 × 844 y corresponde a xs; con 1366 píxeles corres
 
 ## Reflexión
 
-`textContent` introduce texto literal.  
-`innerHTML` interpreta etiquetas y crea elementos.  
-Por eso `<b>hola</b>` solo produce negrita con el segundo.  
-Interpretar entradas ajenas permite inyectar HTML o comportamientos peligrosos.  
-Las tareas utilizan `textContent` para evitarlo.  
+`textContent` introduce texto literal.<br>
+`innerHTML` interpreta etiquetas y crea elementos.<br>
+Por eso `<b>hola</b>` solo produce negrita con el segundo.<br>
+Interpretar entradas ajenas permite inyectar HTML o comportamientos peligrosos.<br>
+Las tareas utilizan `textContent` para evitarlo.<br>
 `innerHTML` se limita a la demostración del ejercicio.
 
 ## Fuentes
