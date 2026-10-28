@@ -59,55 +59,110 @@ function activarResaltado() {
   console.log("Resaltado activado en", parrafos.length, "párrafos");
 }
 
-// ============================================================
-// Ejercicio 4 · Cambiar el primer párrafo
-// ============================================================
-
+// Ejercicio 4: comparar texto literal y HTML.
 function cambiarTexto() {
-  // TODO: lee lo escrito en #nuevoTexto con value y quítale los espacios de los extremos con trim().
-  // TODO: si está vacío, muestra el error #error4 (quítale "d-none") y no cambies nada.
-  // TODO: si no, pon ese texto en el primer párrafo de #contenido con textContent y oculta el error.
+  const texto = document.querySelector("#nuevoTexto").value.trim();
+  const error = document.querySelector("#error4");
+  const primero = document.querySelector("#contenido p");
+  if (texto === "") {
+    error.textContent = "El campo está vacío.";
+    error.classList.remove("d-none");
+    console.log("Cambiar texto: campo vacío");
+  } else if (primero === null) {
+    error.textContent = "Añade un párrafo antes de cambiar el texto.";
+    error.classList.remove("d-none");
+    console.log("Cambiar texto: no hay párrafos");
+  } else {
+    primero.textContent = texto;
+    error.classList.add("d-none");
+    console.log("Texto cambiado con textContent");
+  }
 }
 
 function cambiarConHtml() {
-  // TODO: lo mismo que cambiarTexto(), pero con innerHTML.
-  //       Prueba las dos con <b>hola</b> y explica en el README qué diferencia ves y por qué es peligroso.
+  const texto = document.querySelector("#nuevoTexto").value.trim();
+  const error = document.querySelector("#error4");
+  const primero = document.querySelector("#contenido p");
+  if (texto === "") {
+    error.textContent = "El campo está vacío.";
+    error.classList.remove("d-none");
+    console.log("Probar HTML: campo vacío");
+  } else if (primero === null) {
+    error.textContent = "Añade un párrafo antes de cambiar el texto.";
+    error.classList.remove("d-none");
+    console.log("Probar HTML: no hay párrafos");
+  } else {
+    // Solo se usa aquí para la comparación que pide el ejercicio.
+    primero.innerHTML = texto;
+    error.classList.add("d-none");
+    console.log("Texto cambiado con innerHTML: prueba del ejercicio 4");
+  }
 }
 
-
-// ============================================================
-// Ejercicio 5 · Lista de tareas
-// ============================================================
-
+// Ejercicio 5: lista de tareas creada con nodos.
 function anadirTarea() {
-  // TODO: lee el texto de #tareaInput (value + trim). Si está vacío, muestra un mensaje en #error5.
-  // TODO: si no, crea un <li class="list-group-item"> con dos elementos dentro:
-  //         · un <input> de tipo "checkbox" con la clase "form-check-input",
-  //         · un <span> con el texto de la tarea (textContent).
-  //       Cuelga el <li> de #listaTareas y vacía la casilla (value = "").
-  // TODO: actualiza #totalTareas con el número de <li> que hay en la lista.
+  const entrada = document.querySelector("#tareaInput");
+  const texto = entrada.value.trim();
+  const error = document.querySelector("#error5");
+  if (texto === "") {
+    error.textContent = "Escribe una tarea antes de añadirla.";
+    error.classList.remove("d-none");
+    console.log("Añadir tarea: campo vacío");
+  } else {
+    const tarea = document.createElement("li");
+    tarea.classList.add("list-group-item");
+    const casilla = document.createElement("input");
+    casilla.type = "checkbox";
+    casilla.classList.add("form-check-input", "me-2");
+    const descripcion = document.createElement("span");
+    descripcion.textContent = texto;
+    tarea.append(casilla, descripcion);
+    document.querySelector("#listaTareas").append(tarea);
+    entrada.value = "";
+    error.classList.add("d-none");
+    console.log("Tarea añadida:", texto);
+  }
+  document.querySelector("#totalTareas").textContent = document.querySelectorAll("#listaTareas li").length;
 }
 
 function borrarCompletadas() {
-  // TODO: selecciona las casillas marcadas: document.querySelectorAll("#listaTareas input:checked").
-  // TODO: si no hay ninguna, avisa en #error5. Si hay, recórrelas con for…of y borra el <li> de cada una
-  //       (el <li> es el padre de la casilla: parentElement).
-  // TODO: actualiza #totalTareas.
+  const marcadas = document.querySelectorAll("#listaTareas input:checked");
+  const error = document.querySelector("#error5");
+  if (marcadas.length === 0) {
+    error.textContent = "No hay tareas marcadas para borrar.";
+    error.classList.remove("d-none");
+  } else {
+    for (const casilla of marcadas) {
+      casilla.parentElement.remove();
+    }
+    error.classList.add("d-none");
+  }
+  document.querySelector("#totalTareas").textContent = document.querySelectorAll("#listaTareas li").length;
+  console.log("Tareas completadas borradas:", marcadas.length);
 }
 
-
-// ============================================================
-// Ejercicio 6 · Datos de la ventana (BOM)
-// ============================================================
-
+// Ejercicio 6: datos del navegador y puntos de corte de Bootstrap.
 function verDatosVentana() {
-  // El modelo: el tamaño de la ventana
   const ancho = window.innerWidth;
   const alto = window.innerHeight;
   document.querySelector("#datoVentana").textContent = `${ancho} × ${alto} px`;
-
-  // TODO: con if / else if, el punto de corte de Bootstrap según el ancho: xs (< 576), sm (≥ 576), md (≥ 768),
-  //       lg (≥ 992), xl (≥ 1200) y xxl (≥ 1400). Escríbelo en #datoPunto.
-  // TODO: el tamaño de la pantalla (screen.width y screen.height) en #datoPantalla.
-  // TODO: la URL (location.href) en #datoUrl y el idioma del navegador (navigator.language) en #datoIdioma.
+  let punto;
+  if (ancho < 576) {
+    punto = "xs";
+  } else if (ancho < 768) {
+    punto = "sm";
+  } else if (ancho < 992) {
+    punto = "md";
+  } else if (ancho < 1200) {
+    punto = "lg";
+  } else if (ancho < 1400) {
+    punto = "xl";
+  } else {
+    punto = "xxl";
+  }
+  document.querySelector("#datoPunto").textContent = punto;
+  document.querySelector("#datoPantalla").textContent = `${screen.width} × ${screen.height} px`;
+  document.querySelector("#datoUrl").textContent = location.href;
+  document.querySelector("#datoIdioma").textContent = navigator.language;
+  console.log("Datos de ventana:", ancho, alto, "punto de corte:", punto);
 }
