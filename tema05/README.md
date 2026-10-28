@@ -2,11 +2,19 @@
 
 **Autor:** Marcos Lozano Galvez · DWEC · 2.º DAW · Curso 2026-27
 
-Se completa la plantilla del profesor con seis ejercicios de DOM y BOM. Se mantienen los identificadores, Bootstrap y `defer`, sin CSS propio ni dependencias nuevas.
+Se completa la plantilla del profesor con seis ejercicios de DOM y BOM, manteniendo Bootstrap y `defer`.
 
 ## Instalación y pruebas
 
-Descarga el repositorio y abre `tema05/index.html` en el navegador, o utiliza Go Live en VS Code. Hace falta conexión para cargar Bootstrap. Abre F12 y prueba los botones: aplicar cambios, añadir y eliminar párrafos, activar resaltado, cambiar texto, gestionar tareas y consultar la ventana. Comprueba también los campos vacíos. Recarga para recuperar el estado inicial.
+Abre `tema05/index.html` en el navegador o usa Go Live. Bootstrap necesita conexión. Abre F12 para ver los mensajes.
+
+1. Aplica cambios, añade dos párrafos y elimina todos: el siguiente borrado debe avisar.
+2. Activa el resaltado; añade otro párrafo y comprueba que necesita reactivarlo.
+3. Prueba espacios en blanco y `<b>hola</b>` con ambos botones.
+4. Añade tres tareas, marca una y bórrala: deben quedar dos. Sin marcas debe avisar.
+5. En F12 activa el modo dispositivo: a 390 píxeles debe aparecer xs.
+
+Recarga para recuperar el estado inicial.
 
 ## Capturas
 
