@@ -1,5 +1,5 @@
 /*
-  Tarea 6 · DWEC · [Tu nombre y apellidos]
+  Tarea 6 · DWEC · Marcos Lozano Gálvez
   Objetos y arrays.
 
   Cómo usar esta plantilla:
@@ -35,25 +35,46 @@ function comoTexto(lista) {
 // TODO: añádele el método presentarse(), que devuelve una frase con this.nombre, this.apellidos, this.edad y this.curso.
 //       Por ejemplo: «Soy [nombre] [apellidos], tengo [edad] años y estudio [curso].»
 const estudiante = {
-
+  nombre: "Marcos",
+  apellidos: "Lozano Gálvez",
+  edad: 20,
+  curso: "2.º DAW",
+  presentarse: function () {
+    console.log("presentarse", this);
+    return "Soy " + this.nombre + " " + this.apellidos + ", tengo " + this.edad + " años y estudio " + this.curso + ".";
+  }
 };
 
 function verFicha() {
-  // TODO: vacía #salida1 (textContent = "").
-  // TODO: crea un <ul class="list-group"> con un <li class="list-group-item"> por propiedad: «nombre: ...», «edad: ...».
-  //       Pista: guarda las claves en un array, ["nombre", "apellidos", "edad", "curso"], recórrelo con forEach
-  //       y lee cada valor con corchetes: estudiante[clave].
-  // TODO: debajo, un <p> con la frase de estudiante.presentarse().
-  // TODO: console.log() del objeto entero.
+  console.log("verFicha");
+  const salida = document.querySelector("#salida1");
+  salida.textContent = "";
+  const lista = document.createElement("ul");
+  lista.classList.add("list-group");
+  const claves = ["nombre", "apellidos", "edad", "curso"];
+  claves.forEach(function (clave) {
+    const elemento = document.createElement("li");
+    elemento.classList.add("list-group-item");
+    elemento.textContent = clave + ": " + estudiante[clave];
+    lista.append(elemento);
+  });
+  const frase = document.createElement("p");
+  frase.classList.add("mt-2");
+  frase.textContent = estudiante.presentarse();
+  salida.append(lista, frase);
+  console.log(estudiante);
 }
 
 function cumplirAnios() {
-  // TODO: suma 1 a la edad del estudiante y vuelve a pintar la ficha (llama a verFicha()).
+  console.log("cumplirAnios");
+  estudiante.edad += 1;
+  verFicha();
 }
 
 function quitarCurso() {
-  // TODO: borra la propiedad curso con delete y vuelve a pintar la ficha.
-  //       Fíjate en lo que sale ahora en el curso y explícalo en el README.
+  console.log("quitarCurso");
+  delete estudiante.curso;
+  verFicha();
 }
 
 
@@ -101,12 +122,29 @@ function anadirColor() {
 }
 
 function quitarUltimo() {
-  // TODO: si la lista está vacía, avisa con avisar2() y no hagas nada más.
-  // TODO: si no, saca el último con pop(), vuelve a pintar la lista y di en la consola qué color ha salido.
+  console.log("quitarUltimo");
+  if (colores.length === 0) {
+    mostrarColores();
+    avisar2("No quedan colores para quitar.");
+    return;
+  }
+  const eliminado = colores.pop();
+  document.querySelector("#aviso2").classList.add("d-none");
+  mostrarColores();
+  console.log("Color eliminado:", eliminado);
 }
 
 function quitarPrimero() {
-  // TODO: lo mismo que quitarUltimo(), pero sacando el primero con shift().
+  console.log("quitarPrimero");
+  if (colores.length === 0) {
+    mostrarColores();
+    avisar2("No quedan colores para quitar.");
+    return;
+  }
+  const eliminado = colores.shift();
+  document.querySelector("#aviso2").classList.add("d-none");
+  mostrarColores();
+  console.log("Color eliminado:", eliminado);
 }
 
 mostrarColores();   // pinta los tres colores de partida nada más cargar
