@@ -1,28 +1,15 @@
-/*
-  Tarea 6 · DWEC · Marcos Lozano Gálvez
-  Objetos y arrays.
-
-  Cómo usar esta plantilla:
-  · Hay una función por botón. Escribe tu código donde pone TODO y, cuando termines, borra el TODO.
-  · Ya tienes hechas, como modelo, comoTexto(), pintarProductos() y el ejercicio 2 casi entero:
-    léelas antes de empezar, porque el resto se hace igual.
-  · Los resultados se pintan en la página como en el tema 5: createElement, textContent, classList y append.
-    Antes de volver a pintar una lista, vacíala con textContent = "".
-  · Las funciones se escriben con function, también las que pasas a forEach, sort, map, filter o reduce.
-    Las funciones flecha las veremos en el tema 7: en esta tarea, no las uses.
-  · Cada función deja también su rastro en la consola con console.log().
-  · let y const, nunca var. Compara siempre con ===. Comillas rectas.
-*/
+/* Tarea 6 · Marcos Lozano Gálvez · Objetos y arrays */
 
 console.log("app.js cargado");
 
 
 // ============================================================
 // Ayuda: un array como texto, por ejemplo [1, 2, 3]
-// (ya está hecha: úsala cuando quieras enseñar un array)
+// Presentación de arrays en los resultados.
 // ============================================================
 
 function comoTexto(lista) {
+  console.log("comoTexto");
   return "[" + lista.join(", ") + "]";
 }
 
@@ -31,9 +18,6 @@ function comoTexto(lista) {
 // Ejercicio 1 · Ficha de estudiante
 // ============================================================
 
-// TODO: completa el objeto literal con tus datos: nombre, apellidos, edad y curso.
-// TODO: añádele el método presentarse(), que devuelve una frase con this.nombre, this.apellidos, this.edad y this.curso.
-//       Por ejemplo: «Soy [nombre] [apellidos], tengo [edad] años y estudio [curso].»
 const estudiante = {
   nombre: "Marcos",
   apellidos: "Lozano Gálvez",
@@ -80,12 +64,13 @@ function quitarCurso() {
 
 // ============================================================
 // Ejercicio 2 · Colores
-// mostrarColores() y anadirColor() ya están hechas: son el modelo
+// Añadir y quitar elementos, manteniendo el contador.
 // ============================================================
 
 const colores = ["rojo", "verde", "azul"];
 
 function mostrarColores() {
+  console.log("mostrarColores");
   const lista = document.querySelector("#listaColores");
   lista.textContent = "";   // vaciamos la lista antes de volver a pintarla
 
@@ -100,12 +85,14 @@ function mostrarColores() {
 }
 
 function avisar2(mensaje) {
+  console.log("avisar2");
   const aviso = document.querySelector("#aviso2");
   aviso.textContent = mensaje;
   aviso.classList.remove("d-none");
 }
 
 function anadirColor() {
+  console.log("anadirColor");
   const casilla = document.querySelector("#color");
   const color = casilla.value.trim();
 
@@ -154,7 +141,7 @@ mostrarColores();   // pinta los tres colores de partida nada más cargar
 // Ejercicio 3 · Catálogo de productos
 // ============================================================
 
-// Puedes cambiar los productos por otros, pero deja al menos seis, con estas tres propiedades
+// Catálogo inicial: nombre, precio y categoría.
 const productos = [
   { nombre: "Teclado mecánico", precio: 79.9, categoria: "Periféricos" },
   { nombre: "Ratón inalámbrico", precio: 24.5, categoria: "Periféricos" },
@@ -164,8 +151,9 @@ const productos = [
   { nombre: "Auriculares con micro", precio: 59, categoria: "Audio" }
 ];
 
-// Ya está hecha: pinta en la tabla la lista de productos que le pases
+// Pintar en la tabla los productos recibidos.
 function pintarProductos(lista) {
+  console.log("pintarProductos");
   const cuerpo = document.querySelector("#tablaProductos");
   cuerpo.textContent = "";
 
@@ -324,21 +312,41 @@ mostrarNotas();
 const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 function verDobles() {
-  // TODO: con map(), un array nuevo con el doble de cada número.
-  // TODO: escribe en #salida5 el resultado y, debajo, numeros (para que se vea que no ha cambiado).
+  console.log("verDobles");
+  const dobles = numeros.map(function (numero) {
+    return numero * 2;
+  });
+  pintarLineas("#salida5", ["Dobles: " + comoTexto(dobles), "Original: " + comoTexto(numeros)]);
 }
 
 function verPares() {
-  // TODO: con filter(), los números pares (n % 2 === 0). Escríbelos en #salida5 como en verDobles().
+  console.log("verPares");
+  const pares = numeros.filter(function (numero) {
+    return numero % 2 === 0;
+  });
+  pintarLineas("#salida5", ["Pares: " + comoTexto(pares), "Original: " + comoTexto(numeros)]);
 }
 
 function verSuma() {
-  // TODO: con reduce(), la suma de todos los números (empieza en 0). Escríbela en #salida5.
+  console.log("verSuma");
+  const suma = numeros.reduce(function (total, numero) {
+    return total + numero;
+  }, 0);
+  pintarLineas("#salida5", ["Suma: " + suma, "Original: " + comoTexto(numeros)]);
 }
 
 function verCadena() {
-  // TODO: los tres seguidos: los pares, después sus dobles y al final la suma de esos dobles.
-  //       Escribe en #salida5 una línea por paso.
+  console.log("verCadena");
+  const pares = numeros.filter(function (numero) {
+    return numero % 2 === 0;
+  });
+  const dobles = pares.map(function (numero) {
+    return numero * 2;
+  });
+  const suma = dobles.reduce(function (total, numero) {
+    return total + numero;
+  }, 0);
+  pintarLineas("#salida5", ["1. Pares: " + comoTexto(pares), "2. Dobles: " + comoTexto(dobles), "3. Suma: " + suma, "Original: " + comoTexto(numeros)]);
 }
 
 
@@ -350,26 +358,63 @@ const ciudadesOriginal = ["Granada", "Sevilla", "Málaga", "Córdoba", "Jaén", 
 let ciudades = [...ciudadesOriginal];   // una copia: splice cambia ciudades y así podemos restaurarla
 
 function mostrarCiudades() {
-  // TODO: vacía #ciudades y pon un badge por ciudad con su posición: «0 · Granada», «1 · Sevilla»...
-  //       Pista: forEach le pasa a tu función dos datos: function (ciudad, posicion) { ... }.
+  console.log("mostrarCiudades");
+  const salida = document.querySelector("#ciudades");
+  salida.textContent = "";
+  ciudades.forEach(function (ciudad, posicion) {
+    const badge = document.createElement("span");
+    badge.classList.add("badge", "text-bg-secondary", "me-1", "mb-1");
+    badge.textContent = posicion + " · " + ciudad;
+    salida.append(badge);
+  });
 }
 
 function verSlice() {
-  // TODO: guarda ciudades.slice(2, 5) y escribe en #salida6 qué devuelve y cuántas ciudades siguen en el array.
+  console.log("verSlice");
+  const parte = ciudades.slice(2, 5);
+  pintarLineas("#salida6", ["slice devuelve: " + comoTexto(parte), "El array sigue teniendo " + ciudades.length + " ciudades."]);
 }
 
 function hacerSplice() {
-  // TODO: si quedan menos de 3 ciudades, avisa en #salida6 de que hay que restaurar y no hagas nada más.
-  // TODO: si no, ciudades.splice(2, 2): escribe en #salida6 qué devuelve y cuántas quedan, y vuelve a pintar.
+  console.log("hacerSplice");
+  if (ciudades.length < 3) {
+    pintarLineas("#salida6", ["Quedan menos de tres ciudades. Pulsa Restaurar."]);
+    return;
+  }
+  const eliminadas = ciudades.splice(2, 2);
+  pintarLineas("#salida6", ["splice ha quitado: " + comoTexto(eliminadas), "Quedan " + ciudades.length + " ciudades."]);
+  mostrarCiudades();
 }
 
 function restaurarCiudades() {
-  // TODO: vuelve a copiar ciudadesOriginal en ciudades y pinta.
+  console.log("restaurarCiudades");
+  ciudades = [...ciudadesOriginal];
+  mostrarCiudades();
+  pintarLineas("#salida6", ["Restauradas las " + ciudades.length + " ciudades originales."]);
 }
 
 function buscarCiudad() {
-  // TODO: lee #buscarCiudad (value y trim). Si está vacío, avisa.
-  // TODO: escribe en #salida6 lo que dan includes() e indexOf() con ese nombre. Si no está, indexOf da -1.
+  console.log("buscarCiudad");
+  const texto = document.querySelector("#buscarCiudad").value.trim();
+  if (texto === "") {
+    pintarLineas("#salida6", ["Escribe un nombre de ciudad."]);
+    return;
+  }
+  pintarLineas("#salida6", ["Búsqueda exacta: " + texto, "includes: " + ciudades.includes(texto), "indexOf: " + ciudades.indexOf(texto)]);
 }
 
 mostrarCiudades();
+
+// Cada resultado ocupa su propia línea y se crea con métodos del DOM.
+function pintarLineas(selector, lineas) {
+  console.log("pintarLineas", selector, lineas);
+  const salida = document.querySelector(selector);
+  salida.textContent = "";
+  lineas.forEach(function (texto) {
+    const linea = document.createElement("p");
+    linea.classList.add("mb-1");
+    linea.textContent = texto;
+    salida.append(linea);
+  });
+}
+
