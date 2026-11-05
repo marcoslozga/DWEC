@@ -188,25 +188,50 @@ function pintarProductos(lista) {
 }
 
 function mostrarProductos() {
-  // TODO: pinta todos los productos con pintarProductos() y escribe en #mensaje3 cuántos hay.
+  console.log("mostrarProductos");
+  pintarProductos(productos);
+  document.querySelector("#mensaje3").textContent = productos.length + " productos en el catálogo.";
 }
 
 function ordenarPorPrecio() {
-  // TODO: haz una copia del array con [...productos] y ordénala con sort() de más barato a más caro.
-  //       sort necesita una función de comparación: function (a, b) { return ... }.
-  //       ¿Por qué una copia? Explícalo en el README.
-  // TODO: pinta la copia y escribe en #mensaje3 cómo están ordenados.
+  console.log("ordenarPorPrecio");
+  const copia = [...productos];
+  copia.sort(function (a, b) {
+    return a.precio - b.precio;
+  });
+  pintarProductos(copia);
+  document.querySelector("#mensaje3").textContent = "Productos ordenados de menor a mayor precio.";
 }
 
 function filtrarCaros() {
-  // TODO: con filter(), los productos de más de 50 €. Píntalos y escribe en #mensaje3 cuántos son.
+  console.log("filtrarCaros");
+  const caros = productos.filter(function (producto) {
+    return producto.precio > 50;
+  });
+  pintarProductos(caros);
+  document.querySelector("#mensaje3").textContent = caros.length + " productos de más de 50 €.";
 }
 
 function buscarProducto() {
-  // TODO: lee #buscarProducto (value, trim y toLowerCase). Si está vacío, avisa en #mensaje3.
-  // TODO: con find(), el primer producto cuyo nombre en minúsculas contenga ese texto (includes).
-  // TODO: find devuelve undefined si no encuentra nada: en ese caso, dilo en #mensaje3 y vacía la tabla.
-  //       Si lo encuentra, píntalo solo a él: pintarProductos([encontrado]).
+  console.log("buscarProducto");
+  const texto = document.querySelector("#buscarProducto").value.trim().toLowerCase();
+  const mensaje = document.querySelector("#mensaje3");
+  if (texto === "") {
+    pintarProductos([]);
+    mensaje.textContent = "Escribe el nombre de un producto.";
+    return;
+  }
+  const encontrado = productos.find(function (producto) {
+    return producto.nombre.toLowerCase().includes(texto);
+  });
+  if (encontrado === undefined) {
+    pintarProductos([]);
+    mensaje.textContent = "Sin coincidencias: find devuelve undefined.";
+  } else {
+    pintarProductos([encontrado]);
+    mensaje.textContent = "Primer resultado: " + encontrado.nombre;
+  }
+  console.log("Resultado de find:", encontrado);
 }
 
 mostrarProductos();   // la tabla completa nada más cargar
