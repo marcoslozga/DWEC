@@ -1,17 +1,4 @@
-/*
-  Tarea 7 · DWEC · [Tu nombre y apellidos]
-  Funciones, flechas y clases.
 
-  Cómo usar esta plantilla:
-  · Hay una función por botón. Escribe tu código donde pone TODO y, cuando termines, borra el TODO.
-  · La regla de este tema:
-      - declaración, function nombre() { ... }, para las funciones con nombre, como las de los botones;
-      - FLECHA para todos los callbacks: forEach, map, filter, sort, reduce, find, some...;
-      - nunca una flecha como método: en las clases, la forma corta media() { ... }.
-  · Los resultados se pintan en la página como en los temas 5 y 6: createElement, textContent, classList y append.
-  · Cada función deja también su rastro en la consola con console.log().
-  · let y const, nunca var. Compara siempre con ===. Comillas rectas.
-*/
 
 console.log("app.js cargado");
 
@@ -105,9 +92,7 @@ function comoTexto(pelicula) {
   return `${pelicula.titulo} (${pelicula.anio}) · ${pelicula.duracion} min`;
 }
 
-// Las cuatro funciones siguientes ya funcionan, pero sus callbacks están escritos con function, como en el tema 6.
-// TODO: pasa a flecha los cuatro callbacks (map, filter, sort y reduce). Si el cuerpo es solo una expresión,
-//       sin llaves ni return. Comprueba después que cada botón sigue dando lo mismo.
+
 
 function verTitulos() {
     const titulos = peliculas.map((pelicula) => pelicula.titulo);
