@@ -166,11 +166,15 @@ function buscarAntigua() {
 const numeros = [3, -1, 4, -1, 5, 9];
 document.querySelector("#numeros3").textContent = `const numeros = [${numeros.join(", ")}];`;
 
-// TODO: transformar(lista, operacion) hace a mano lo que hace map, sin usar map:
-//       recorre lista con for…of, llama a operacion con cada elemento, guarda lo que devuelve
-//       en un array nuevo y, al final, devuelve ese array.
 function transformar(lista, operacion) {
+  const resultado = [];
 
+  for (const elemento of lista) {
+    resultado.push(operacion(elemento));
+  }
+
+  console.log("Lista transformada:", resultado);
+  return resultado;
 }
 
 // Ya está hecha: escribe en #salida3 tu resultado, el de map y numeros
@@ -198,12 +202,17 @@ function verDobles() {
 }
 
 function verCuadrados() {
-  // TODO: como verDobles(), con el cuadrado de cada número (n ** 2).
+  const resultado = transformar(numeros, (n) => n ** 2);
+
+  mostrar3("cuadrados", resultado, numeros.map((n) => n ** 2));
+  console.log("Ejercicio 3: cuadrados", resultado);
 }
 
 function verAbsolutos() {
-  // TODO: como verDobles(), con el valor absoluto (Math.abs). Pista: Math.abs ya es una función,
-  //       así que se puede pasar tal cual, sin paréntesis.
+  const resultado = transformar(numeros, Math.abs);
+
+  mostrar3("valores absolutos", resultado, numeros.map((n) => Math.abs(n)));
+  console.log("Ejercicio 3: valores absolutos", resultado);
 }
 
 
@@ -211,11 +220,15 @@ function verAbsolutos() {
 // Ejercicio 4 · Dos contadores con closure
 // ============================================================
 
-// TODO: crearContador(paso) guarda una variable cuenta que empieza en 0 y DEVUELVE una función.
-//       Cada vez que se llama a esa función, suma paso a cuenta y devuelve el valor nuevo.
-//       paso vale 1 por defecto.
-function crearContador(paso) {
 
+function crearContador(paso = 1) {
+  let cuenta = 0;
+
+  return function () {
+    cuenta = cuenta + paso;
+    console.log("Cuenta actual:", cuenta);
+    return cuenta;
+  };
 }
 
 const contarDeUno = crearContador();
@@ -229,7 +242,9 @@ function sumarUno() {
 }
 
 function sumarCinco() {
-  // TODO: lo mismo con contarDeCinco y #cuenta5.
+  const valor = contarDeCinco();
+  document.querySelector("#cuenta5").textContent = valor;
+  console.log("Ejercicio 4: de 5 en 5", valor);
 }
 
 
